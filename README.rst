@@ -373,7 +373,7 @@ TLS handshake
   Transport Layer Security (TLS) version, list of cipher algorithms and
   compression methods available.
 
-* The server replies with a ``ServerHello`` message to the client with the
+* OOBThe server replies with a ``ServerHello`` message to the client with the
   TLS version, selected cipher, selected compression methods and the server's
   public certificate signed by a CA (Certificate Authority). The certificate
   contains a public key that will be used by the client to encrypt the rest of
@@ -400,6 +400,7 @@ TLS handshake
 If a packet is dropped
 ----------------------
 
+OA
 Sometimes, due to network congestion or flaky hardware connections, TLS packets
 will be dropped before they get to their final destination. The sender then has
 to decide how to react. The algorithm for this is called `TCP congestion
@@ -412,7 +413,7 @@ control`_. This varies depending on the sender; the most common algorithms are
   'slow-start threshold'. In some implementations, this threshold is adaptive.
 * After reaching the slow-start threshold, the window increases additively for
   each packet acknowledged. If a packet is dropped, the window reduces
-  exponentially until another packet is acknowledged.
+  expBOBonentially until another packet is acknowledged.
 
 HTTP protocol
 -------------
@@ -492,12 +493,12 @@ and IIS for Windows.
      ``PATCH``, ``DELETE``, ``CONNECT``, ``OPTIONS``, or ``TRACE``). In the
      case of a URL entered directly into the address bar, this will be ``GET``.
    * Domain, in this case - google.com.
-   * Requested path/page, in this case - / (as no specific path/page was
+   * Requested path/page, in this case - / (as no specific path/page OOAwas
      requested, / is the default path).
 * The server verifies that there is a Virtual Host configured on the server
   that corresponds with google.com.
 * The server verifies that google.com can accept GET requests.
-* The server verifies that the client is allowed to use this method
+* The server verifies that the client is allowed to use this methodOA
   (by IP, authentication, etc.).
 * If the server has a rewrite module installed (like mod_rewrite for Apache or
   URL Rewrite for IIS), it tries to match the request against one of the
@@ -509,6 +510,10 @@ and IIS for Windows.
 * The server parses the file according to the handler. If Google
   is running on PHP, the server uses PHP to interpret the index file, and
   streams the output to the client.
+
+The Firewall.
+
+The firewall serves two purposes, it prevents nasty things fron the internet from comming into the intranet, and it also prevents sensitive information from being sent out on to the internet. The firewall is designed to let in only those packets that meet it's criteria. port 80 receives packets from the internet to the webserver any attempt on other ports is denied.
 
 Behind the scenes of the Browser
 ----------------------------------
